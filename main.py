@@ -1,4 +1,4 @@
-import aiosonic, tasksio
+import aiosonic, tasksio, asyncio
 from aiosonic import HTTPClient as ClientSession
 
 class Sniper:
