@@ -10,9 +10,9 @@ class Sniper:
     self.amount_loop = amt_loop
   
   async def remove_vanity(self, session):
-    trying = await session.patch(f"https://discord.com/api/v10/guilds/{self.target_guild}/vanity-url", json={"Authorization": self.token,"code": "cityofhomos"})
+    trying = await session.patch(f"https://discord.com/api/v10/guilds/{self.target_guild}/vanity-url", headers={"Authorization": self.token}, json={"code": "cityofhomos"})
     
-    success = await session.patch(f"https://discord.com/api/v10/guilds/{self.guild}/vanity-url", json={"Authorization": self.token, "code": self.vanity_to_steal})
+    success = await session.patch(f"https://discord.com/api/v10/guilds/{self.guild}/vanity-url", headers={"Authorization": self.token}, json={"code": self.vanity_to_steal})
     
     if trying.status_code in (200, 201, 204):
       print("changed the vanity of the target guild")
